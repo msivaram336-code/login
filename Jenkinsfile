@@ -1,10 +1,15 @@
-
 pipeline {
     agent any
+
     stages {
+        stage('Install Dependencies') {
+            steps {
+                bat 'npm install'
+            }
+        }
+
         stage('Run Playwright Tests') {
             steps {
-                // Use 'bat' if you are on Windows, or 'sh' if you are on Linux/Mac
                 bat 'npx playwright test'
             }
         }
